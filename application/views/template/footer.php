@@ -9,14 +9,14 @@
         <span class="icon-bar"></span>
       </button>
 	  
-      <a class="navbar-brand"  href="/SGF/home.php">SGF - SUPPORTSAT</a> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
+      <a class="navbar-brand"  href="javascript:void(0);">SGF - SUPPORTSAT</a> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
 	  &nbsp; &nbsp; 
     </div>
 	
-	  <a class="navbar-brand" href="/SGF/home.php">   SISTEMA GERENCIAL  DE CLIENTES E FROTAS</a>
+	  <a class="navbar-brand" href="javascript:void(0);">   SISTEMA GERENCIAL  DE CLIENTES E FROTAS</a>
 
 
-<a class="navbar-brand" href="/SGF/home.php">
+<a class="navbar-brand" href="javascript:void(0);">
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;

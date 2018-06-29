@@ -13,6 +13,7 @@ class LoginModel extends CI_Model {
    {
         $query = $this->db->get('clientes');
         return $query->result();
+       
    }
 	
 }
