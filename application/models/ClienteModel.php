@@ -12,23 +12,31 @@ class ClienteModel extends CI_Model {
         return $query->result();
     }
 
-    public function getAll(){
-        $query =  $this->db->get('clientes');
-        return $query->result();
-    }
+    public function getAll()
+    {
+     $this->db->select('*');
+     $this->db->from('clientes');
+     $query =  $this->db->get();
 
-    public function getUserId($id){
-        $query = $this->db->get_where('clientes', array('id' =>$id));
-        return $query->result();
-    }
+     return $query->result();
+ }
 
-    public function cadastroCliente($dados)
-	{
-		if ($this->db->insert('clientes', $dados)) {
-			return true;
-		}else{
-			return false;
-		}
-	}
+ public function getUserId($id){
+   $this->db->select('clientes.* ,veiculos.placa');
+   $this->db->from('clientes');
+   $this->db ->join('veiculos', 'clientes.id = veiculos.id_cliente','left');
+   $this->db->where('clientes.id', $id);
+   $query = $this->db->get();
+   return $query->result();
+}
+
+public function cadastroCliente($dados)
+{
+  if ($this->db->insert('clientes', $dados)) {
+     return true;
+ }else{
+     return false;
+ }
+}
 
 }

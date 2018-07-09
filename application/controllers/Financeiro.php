@@ -17,8 +17,4 @@ class Cliente extends CI_Controller {
 		$this->load->view('visualizar_cliente',$array);
 		$this->load->view('template/footer');
     }
-
-    public function vincularCarros($id){
-        echo "id do cliente".$id;exit;
-    }
 }
