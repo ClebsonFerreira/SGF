@@ -18,6 +18,11 @@ class Home extends CI_Controller {
 		$this->load->view('template/footer');
 	}
 
+	public function teste()
+	{
+		$array=array(dados=>'nome');
+	}
+
 
     
 		public function pesquisarV()
