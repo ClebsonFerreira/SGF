@@ -21,6 +21,8 @@ class Home extends CI_Controller {
 	public function teste()
 	{
 		$array=array(dados=>'nome');
+		print_r($array);
+		echo"Minha linguagen favorita";
 	}
 
 
