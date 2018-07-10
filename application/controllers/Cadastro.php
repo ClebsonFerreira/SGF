@@ -6,6 +6,8 @@ class Cadastro extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('ClienteModel');
+		$this->load->model('VeiculosModel');
+		
 		
 	}
 
@@ -16,7 +18,7 @@ class Cadastro extends CI_Controller {
 		if($this->input->post()){
 			if(!empty($this->input->post('nome'))){
 				if( $this->ClienteModel->cadastroCliente($this->input->post())) {
-					$array['msg'] = "Cadastrado com sucesso!";
+					$array['msg'] = "Cadastro efetuado!";
 					$this->load->view('template/heder');
 					$this->load->view('cadastro',$array);
 					$this->load->view('template/footer');
@@ -35,19 +37,57 @@ class Cadastro extends CI_Controller {
 
 		
 	}
+
+	
 	
     public function veiculos()
 	{
-        echo "Cadastro veiculos";
-		// $this->load->view('template/heder');
-		// $this->load->view('welcome_message');
-		// $this->load->view('template/footer');
-    }
+		$array = array();
+		if($this->input->post()){
+			if(!empty($this->input->post('marca'))){
+				if( $this->VeiculosModel->cadastroVeiculos($this->input->post())) {
+					$array['msg'] = "Cadastro efetuado!";
+					$this->load->view('template/heder');
+					$this->load->view('veiculos',$array);
+					$this->load->view('template/footer');
+				}else{
+					$array['msg'] = "Error ao cadastrar";
+					$this->load->view('template/heder');
+					$this->load->view('veiculos',$array);
+					$this->load->view('template/footer');
+				}
+			}
+		}else{
+			$this->load->view('template/heder');
+			$this->load->view('veiculos',$array);
+			$this->load->view('template/footer');
+		}
+
+		
+	}
     public function financeiro()
 	{
-        echo "Cadastro financeiro";
-		// $this->load->view('template/heder');
-		// $this->load->view('welcome_message');
-		// $this->load->view('template/footer');
+		$array = array();
+		if($this->input->post()){
+			if(!empty($this->input->post('nome'))){
+				if( $this->ClienteModel->cadastroVeiculos($this->input->post())) {
+					$array['msg'] = "Cadastro efetuado!";
+					$this->load->view('template/heder');
+					$this->load->view('cadastro',$array);
+					$this->load->view('template/footer');
+				}else{
+					$array['msg'] = "Error ao cadastrar";
+					$this->load->view('template/heder');
+					$this->load->view('cadastro',$array);
+					$this->load->view('template/footer');
+				}
+			}
+		}else{
+			$this->load->view('template/heder');
+			$this->load->view('cadastro',$array);
+			$this->load->view('template/footer');
+		}
+
+		
 	}
-}
+	}
