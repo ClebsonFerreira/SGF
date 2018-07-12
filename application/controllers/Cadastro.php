@@ -84,7 +84,7 @@ class Cadastro extends CI_Controller {
 			}
 		}else{
 			$this->load->view('template/heder');
-			$this->load->view('cadastro',$array);
+			$this->load->view('financeiro',$array);
 			$this->load->view('template/footer');
 		}
 

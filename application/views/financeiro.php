@@ -1,60 +1,84 @@
-<?php include('template/header.php'); ?>
-<?php include('template/menu.php'); ?>
-
-
 <div class="container">
 	<div class="row">
-		<div class="panel panel-primary">
-			<div class="panel-heading">BALANÇO FINANCEIRO</div>
-			   <div class="panel-body">
-				<form method="post" action="controller/cadastroV.php" >
-				
-		<div class="form-group">
-		<label for="marca ">MARCA </label>  
-		<input id="marca" type="text" size="70" maxlength="60"  name="marca" class="form-control"  />
-		</div>
-		<div class="form-group">	
-	    <label for="modeloV ">MODELO VEICULO </label>  
-		<input id="modeloV" type="text" size="20" maxlength="30"  name="modeloV"class="form-control"  />	
-		</div>
-		<div class="form-group">	
-	    <label for="ano ">ANO</label>  
-		<input id="ano" type="number" size="10" maxlength="10"  name="ano" class="form-control"  />	
-		</div>
-		<div class="form-group">	
-	    <label for="placa ">PLACA </label>  
-		<input id="placa" type="text" size="8" maxlength="8" name="placa" class="form-control"  />	
-		</div>
-		<div class="form-group">	
-	    <label for="modeloEq ">MODELO RASTREADOR </label>  
-		<input id="modeloEq" type="text"size="8" maxlength="8"  name="modeloEq" class="form-control" /> 
-		
-		<div class="form-group">	
-	    <label for="serialEq ">SERIAL EQUIPAMENTO </label>  
-		<input id="serialEq" type="text" size="11" maxlength="11" name="serialEq" class="form-control" />	
-		</div>
-		
-		<div class="form-group">	
-	    <label for="chip ">CHIP</label>  
-		<input id="chip" type="text" size="20" maxlength="20"  name="chip" class="form-control" />	
-		</div>
-		
-		<div class="form-group">	
-	    <label for="valor ">VALOR </label>  
-		<input id="valor" type="number" size="5" maxlength="5"  name="valor" class="form-control" />	
-		
-   </div>
-				
-				<div class="form-group">	
-				<input name="controller/cadastroV.php" type="submit"  class="btn btn-primary" id="controller/cadastroV.php" value="Concluir  Cadastro!" />
- 				<input type="reset"  class="btn btn-defaut" id="limpar" value="Limpar Campos preenchidos!" />
+		<div class="col-md-4">
+			<div class="panel panel-info">
+				<div class="panel-heading">Clientes Cadastrados</div>
+				<div class="panel-body">
+					<h1><?php echo count($Clientes);?></h1>
 				</div>
-				</form>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="panel panel-info">
+				<div class="panel-heading">Veiculos Cadastrados</div>
+				<div class="panel-body">
+					<h1><?php echo count($Veiculos);?></h1>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="panel panel-info">
+				<div class="panel-heading">Valor Total dos contratos</div>
+				<div class="panel-body">
+					<h1><?php echo 'R$' . number_format($totalPagamento, 2, ',', '.');   ?></h1>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-info">
+				<div class="panel-heading">Lista de Cliente</div>
+				<div class="panel-body">
+					<form action="/SGF/Financeiro/pesquisar" method="POST">
+						<div class="row">
+							<div class="container">
+								<div class="col-md-8">
+									<div class="form-group">
+										<input type="text" name="pesquisa_cliente" class="form-control" placeholder="Pesquisar por nome"  autocomplete="off">
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<button type="submit" class="btn btn-default" name="pesquisa" value="1"><span class="glyphicon glyphicon-search"></span>  Pesquisar</button>
+										<button type="submit" class="btn btn-default" name="listarTodos" value="2"><span class="glyphicon glyphicon-list"></span>  Listar Todos</button>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</form>
+				
+					<table class="table table-hover">
+						<tr >
+							<th class="text-center">Nome</th>
+							<th class="text-center">Vencimento</th>
+							<th class="text-center">Valor Contrato</th>
+							<th class="text-center">Status Pagamento</th>
+						</tr>
+						<?php foreach ($Clientes as $key => $linha):?>
+							<tr class="text-center">
+								<td><?php echo $linha->nome; ?></td>
+								<td><?php echo $linha->vencimento; ?></td>
+								<td>
+									<?php if (!empty($valor_total[$key][0]->valor)):?>
+										<?php echo 'R$' . number_format($valor_total[$key][0]->valor, 2, ',', '.');   ?> 
+									<?php else: ?>
+										<?php echo 'R$' . number_format(0, 2, ',', '.');   ?> 
+									<?php endif; ?>
+
+								</td>
+								<td>
+									<select class="form-control" disabled>
+										<option  <?php echo ($linha->status == 'T')?'selected':''?> >Sim</option>
+										<option <?php echo ($linha->status == 'F')?'selected':''?>>Não</option>
+									</select>
+								</td>
+							</tr>
+						<?php endforeach; ?>
+					</table>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
-<?php include('template/menudown.php'); ?>
-<?php include('template/footer.php'); ?>

@@ -45,7 +45,7 @@ class Home extends CI_Controller {
 				$array['ListaUsuario'] = $this->ClienteModel->getAll();
 
 				foreach ($array['ListaUsuario'] as $key => $value ) {
-					$array['placa'][$key] = $this->VeiculosModel->getCarClienteID($value->id);
+					$array['placa'][$key] = $this->VeiculosModel->getCarClienteID($value->id , 3);
 
 				}
 

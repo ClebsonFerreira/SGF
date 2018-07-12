@@ -44,7 +44,7 @@
 													<td>
 														<div class="checkbox">
 															<label>
-																<input type="checkbox" checked  disabled value="<?php echo $veiculo->id; ?>" name="idCar[]">
+																<input type="checkbox" checked  value="<?php echo $veiculo->id; ?>" name="idCar[]">
 															</label>
 														</div>
 													</td>

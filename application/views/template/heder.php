@@ -37,7 +37,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <li class="active"><a href="<?php echo base_url();?>Home">Home</a></li>
           <li><a href="<?php echo base_url();?>Cadastro/clientes">Cadastros Clientes</a></li>
           <li><a href="<?php echo base_url();?>Cadastro/veiculos">Cadastros Veiculos</a></li>
-          <li><a href="<?php echo base_url();?>Cadastro/financeiro">Financeiro</a></li>
+          <li><a href="<?php echo base_url();?>Financeiro">Financeiro</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="<?php echo base_url();?>">Sair</a></li>

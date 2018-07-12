@@ -44,16 +44,20 @@ public function getUserId($id)
  return $query->result();
 }
 
-public function getCarClienteID($id){
+public function getCarClienteID($id ,$limit = 0)
+{
   $this->db->select('*');
   $this->db->from('veiculos');
   $this->db->where('veiculos.id_cliente', $id);
-  $this->db->limit('3');
+  if ($limit != 0) {
+    $this->db->limit($limit);  
+  }
   $query =  $this->db->get();
   return $query->result();
 }
 
-public function updateClientCar($dados){
+public function updateClientCar($dados)
+{
   $data = array(
     'id_cliente' => $dados["idCliente"]
   );
@@ -62,6 +66,17 @@ public function updateClientCar($dados){
     $this->db->update('veiculos',$data); 
   }
 
+}
+
+public function removeClientCar($dados)
+{
+ $data = array(
+  'id_cliente' => null
+);
+ foreach ($dados['idCar'] as $value) {
+  $this->db->where('id', $value);
+  $this->db->update('veiculos',$data); 
+}
 }
 
 
